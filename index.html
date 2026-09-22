@@ -329,4 +329,65 @@ const star=document.createElement("div");
 star.className="star";
 
 star.style.left=Math.random()*100+"vw";
-s
+star.style.top=Math.random()*100+"vh";
+
+star.style.animationDuration=
+(3+Math.random()*7)+"s,"+
+(1+Math.random()*3)+"s";
+
+star.style.animationDelay=
+(-Math.random()*10)+"s,"+
+(-Math.random()*3)+"s";
+
+stars.appendChild(star);
+
+}
+
+function toggleFunction(button,name){
+
+button.classList.toggle("active");
+
+const status=document.getElementById("status");
+
+if(button.classList.contains("active")){
+status.textContent=name+" : ON";
+}else{
+status.textContent=name+" : OFF";
+}
+
+clearTimeout(window.statusTimer);
+
+window.statusTimer=setTimeout(function(){
+status.textContent="STATUS : READY";
+},3000);
+
+}
+
+function startFF(button){
+
+button.style.transform="scale(.92)";
+
+setTimeout(function(){
+button.style.transform="";
+},120);
+
+const status=document.getElementById("status");
+
+status.textContent="FREE FIRE : OPENING";
+
+const packageName="com.dts.freefireth";
+
+window.location.href=
+"intent://#Intent;scheme=freefire;package="+
+packageName+";end";
+
+setTimeout(function(){
+status.textContent="STATUS : READY";
+},3000);
+
+}
+
+</script>
+
+</body>
+</html>
