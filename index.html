@@ -4,49 +4,329 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SHIRTX PANEL</title>
+
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0;width:100%;min-height:100%;background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif}
 body{overflow-x:hidden}
-#stars{position:fixed;inset:0;overflow:hidden;background:#000;z-index:0}
-.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.7;animation:starMove linear infinite,starBlink ease-in-out infinite alternate}
-@keyframes starMove{0%{transform:translate(0,0)}50%{transform:translate(-40px,60px)}100%{transform:translate(-90px,130px)}}
-@keyframes starBlink{0%{opacity:.15}100%{opacity:1}}
-.panel{position:relative;z-index:1;width:100%;max-width:720px;margin:auto;padding:55px 22px 70px}
-.avatar{width:155px;height:155px;margin:0 auto;border-radius:50%;border:4px solid #777;background:#222;box-shadow:0 0 15px #777,0 0 35px #444;overflow:hidden}
-.avatar img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%)}
-.title{text-align:center;font-size:58px;font-weight:900;margin-top:28px;margin-bottom:72px;letter-spacing:-2px}
-.card{width:100%;min-height:150px;margin-bottom:20px;padding:25px;display:flex;align-items:center;border-radius:30px;background:#171717;border:1px solid #555;transition:transform .15s ease,border-color .15s ease}
-.card:active{transform:scale(.985)}
-.icon{width:92px;height:92px;flex-shrink:0;border-radius:20px;background:#030303;display:flex;align-items:center;justify-content:center;font-size:44px}
-.info{flex:1;min-width:0;padding-left:22px}
-.name{font-size:34px;font-weight:800;white-space:nowrap}
-.sub{margin-top:7px;color:#aaa;font-size:20px}
-.switch{width:124px;height:70px;flex-shrink:0;border:0;outline:none;padding:8px;border-radius:50px;background:#5b5b5b;position:relative;cursor:pointer;appearance:none;-webkit-appearance:none;transition:background .2s ease,transform .1s ease}
-.switch:active{transform:scale(.93)}
-.switch::after{content:"";position:absolute;width:54px;height:54px;left:8px;top:8px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35);transition:left .22s cubic-bezier(.2,.8,.2,1)}
-.switch.active{background:#777}
-.switch.active::after{left:62px}
-.buttons{display:flex;gap:22px;width:100%;margin-top:22px}
-.start{flex:1;height:82px;border-radius:25px;border:1px solid #666;background:#202020;color:#fff;font-size:25px;font-weight:900;cursor:pointer;transition:transform .12s ease,background .12s ease,box-shadow .12s ease}
-.start:active{transform:scale(.92);background:#444;box-shadow:0 0 10px #fff,0 0 25px #777}
-.status{text-align:center;color:#aaa;font-size:21px;margin-top:30px;min-height:26px}
-.footer{text-align:center;color:#555;font-size:18px;letter-spacing:8px;margin-top:40px}
+
+#stars{
+position:fixed;
+inset:0;
+overflow:hidden;
+background:#000;
+z-index:0
+}
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:#fff;
+border-radius:50%;
+opacity:.7;
+animation:starMove linear infinite,starBlink ease-in-out infinite alternate
+}
+
+@keyframes starMove{
+0%{transform:translate(0,0)}
+50%{transform:translate(-40px,60px)}
+100%{transform:translate(-90px,130px)}
+}
+
+@keyframes starBlink{
+0%{opacity:.15}
+100%{opacity:1}
+}
+
+.panel{
+position:relative;
+z-index:1;
+width:100%;
+max-width:720px;
+margin:auto;
+padding:55px 22px 70px
+}
+
+.avatar{
+width:155px;
+height:155px;
+margin:0 auto;
+border-radius:50%;
+border:4px solid #777;
+background:#222;
+box-shadow:0 0 15px #777,0 0 35px #444;
+overflow:hidden
+}
+
+.avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:grayscale(100%)
+}
+
+.title{
+text-align:center;
+font-size:58px;
+font-weight:900;
+margin-top:28px;
+margin-bottom:72px;
+letter-spacing:-2px
+}
+
+.card{
+width:100%;
+min-height:150px;
+margin-bottom:20px;
+padding:25px;
+display:flex;
+align-items:center;
+border-radius:30px;
+background:#171717;
+border:1px solid #555;
+transition:transform .15s ease,border-color .15s ease
+}
+
+.card:active{
+transform:scale(.985)
+}
+
+.icon{
+width:92px;
+height:92px;
+flex-shrink:0;
+border-radius:20px;
+background:#030303;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:44px
+}
+
+.info{
+flex:1;
+min-width:0;
+padding-left:22px
+}
+
+.name{
+font-size:34px;
+font-weight:800;
+white-space:nowrap
+}
+
+.sub{
+margin-top:7px;
+color:#aaa;
+font-size:20px
+}
+
+.switch{
+width:124px;
+height:70px;
+flex-shrink:0;
+border:0;
+outline:none;
+padding:8px;
+border-radius:50px;
+background:#5b5b5b;
+position:relative;
+cursor:pointer;
+appearance:none;
+-webkit-appearance:none;
+transition:background .2s ease,transform .1s ease
+}
+
+.switch:active{
+transform:scale(.93)
+}
+
+.switch::after{
+content:"";
+position:absolute;
+width:54px;
+height:54px;
+left:8px;
+top:8px;
+border-radius:50%;
+background:#fff;
+box-shadow:0 1px 3px rgba(0,0,0,.35);
+transition:left .22s cubic-bezier(.2,.8,.2,1)
+}
+
+.switch.active{
+background:#777
+}
+
+.switch.active::after{
+left:62px
+}
+
+.buttons{
+display:flex;
+gap:22px;
+width:100%;
+margin-top:22px
+}
+
+.start{
+flex:1;
+height:82px;
+border-radius:25px;
+border:1px solid #666;
+background:#202020;
+color:#fff;
+font-size:25px;
+font-weight:900;
+cursor:pointer;
+transition:transform .12s ease,background .12s ease,box-shadow .12s ease
+}
+
+.start:active{
+transform:scale(.92);
+background:#444;
+box-shadow:0 0 10px #fff,0 0 25px #777
+}
+
+.status{
+text-align:center;
+color:#aaa;
+font-size:21px;
+margin-top:30px;
+min-height:26px
+}
+
+.footer{
+text-align:center;
+color:#555;
+font-size:18px;
+letter-spacing:8px;
+margin-top:40px
+}
+
 @media(max-width:500px){
-.panel{padding:55px 22px 70px}
-.avatar{width:155px;height:155px}
-.title{font-size:50px;margin-bottom:72px}
-.card{min-height:145px;padding:22px}
-.icon{width:82px;height:82px;font-size:38px}
-.name{font-size:27px}
-.sub{font-size:18px}
-.switch{width:124px;height:70px}
-.buttons{gap:22px}
-.start{height:68px;font-size:20px}
+
+.panel{
+padding:55px 22px 70px
+}
+
+.avatar{
+width:155px;
+height:155px
+}
+
+.title{
+font-size:50px;
+margin-bottom:72px
+}
+
+.card{
+min-height:145px;
+padding:22px
+}
+
+.icon{
+width:82px;
+height:82px;
+font-size:38px
+}
+
+.name{
+font-size:27px
+}
+
+.sub{
+font-size:18px
+}
+
+.switch{
+width:124px;
+height:70px
+}
+
+.buttons{
+gap:22px
+}
+
+.start{
+height:68px;
+font-size:20px
+}
+
 }
 </style>
 </head>
+
 <body>
+
 <div id="stars"></div>
+
 <div class="panel">
-<div class="avatar"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/7QBEUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAACgcAigAIkZCTUQzMDAwMDJiNTAxMDAwMDFlMmMwMDAwYzgzOTAwMDAA/9sAxAAJCAgQCxAQDw8QFxESERcYGBQUGBgaFhgXGBYaGxwbHR0bHBscGh8gHxocHR8iIh8dICYmJiAmIyMmKiYqJSUeEQAIAAcABwAOAAoADgAMAA0ADQAMABMADQAPAA0AEwARABEADgAOABEAEQAUAA8AEAAPABAADwAUABYAEwASABMAEwASABMAFgAUABIAEQAPABEAEgAUABUAEwAWABYAEwAVABYAEQATABEAFgAVABYAFgAVACAAIwAgACAAIAEL/8IAEQgDBQMAAwEiAAIRAQMRAf/EAIAAAQABBQEBAAAAAAAAAAAAAAAFAQIDBAYHCBAAAQMCBAMGBAYABQQDAAAAAQACAwQRBRIhMRATQSAiMFBRYQYyQHEUI0JSgZEWM0NgYhWhsLFygpARAAIBAgUEAgIBBQEAAAAAAAABERAhIDFBUFEwQGFxgZGhscFg0eHw8ZD/2gAIAQEAAAAA9UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMcFzkVhuuy9N11wAAAAAAAAAAAAAMHm3lsDhBm7P1vsLgAAAAAAAAAAAxxnOwUXpM8pPZPJ+NpQAzeie0yYAAAAAAAAAAWxnI8vAQETgMm9ra9K0AMl2EnPoHqQAAAAAAAAAFvMeS8RpgALsmzIScrfHwrseR52iV+jujAAAAAAAAABpeS+VaoF11gyYgX7U30czZkrxvHWOi+lJAAAAAAAAAA1vMvKIYF8hn07LMdlZWL2MujaFer6aUucnw+N6B77sgAAAAAAAAt4zxPm6Bnns8NZTUx1vt6XmEhPwEeHQegc50O05PhbXf+/bIAAAAAAAA1vG/LMIbPSbXNa27oYDYw07LjDY7SG52isv1XQ8V1WpK8Tyavo/vWQAAAAAAAByvh/KKGbpN/mozZv0hua+Ovb8OMnW4eVo6ietkvPO15zruFhl3s3rwAAAAAAAMXkvkVu/H4ayvS85Ds9MA2rtM7biqL6U6jX55XspGOjIbPd3fnus2vo7rgAAAAAABzvinFSM/oweXsdLksLLbYKykUOo5zE3Os56J6eF0V3UxGhiJad4611f0pnAAAAAAA0vI+Cy4uvx+f8AQdryPKteqgbTVG/Zp1kM/Zw3JS8JQrQJHVwLvefSwAAAAAAt4zxbHIw3db3LbXR62lBcfiAbmmFc2B03d8vIa/D48QADovp3OAAAAAAanj+hs+fY+4s1JqUOe87sANjXAOs7xA0x+fYwAF30T3YAAAAADnvJvQ9bwPF00PqeiTdWDi8HNUAurYAehdMxwV8dw9AAHoH0MAAAAABxPO+ncB4ZqyWlXvdyZW830HO8LhAutBOxGFKel6MrE8/v8jHAANz6mlAAAAABby9/S+Y+I69au5h8ffYYudz4uG5YuyYqAu7WRhuQJy+f3+e5ZYAAe5+pgAAAADDTL5p4xZoHTW852N9+Tq7LPK9Kb05PqIaNh8CTRno+/wAx
+
+<div class="avatar">
+<img src="./Messenger_creation_EE58EC70-CFDC-4C22-8D57-3C3DB93E80B7.jpeg" alt="SHIRTX">
+</div>
+
+<div class="title">SHIRTX</div>
+
+<div class="card">
+<div class="icon">🎯</div>
+<div class="info">
+<div class="name">Reduzir Recuo</div>
+<div class="sub">UI Demo</div>
+</div>
+<button class="switch" onclick="toggleFunction(this,'Reduzir Recuo')"></button>
+</div>
+
+<div class="card">
+<div class="icon">⚡</div>
+<div class="info">
+<div class="name">Aumentar FPS</div>
+<div class="sub">UI Demo</div>
+</div>
+<button class="switch" onclick="toggleFunction(this,'Aumentar FPS')"></button>
+</div>
+
+<div class="card">
+<div class="icon">☝️</div>
+<div class="info">
+<div class="name">Otimizar Touch</div>
+<div class="sub">UI Demo</div>
+</div>
+<button class="switch" onclick="toggleFunction(this,'Otimizar Touch')"></button>
+</div>
+
+<div class="card">
+<div class="icon">🎮</div>
+<div class="info">
+<div class="name">Retirar Input Lag</div>
+<div class="sub">UI Demo</div>
+</div>
+<button class="switch" onclick="toggleFunction(this,'Retirar Input Lag')"></button>
+</div>
+
+<div class="buttons">
+<button class="start" onclick="startFF(this)">⚡ Abrir Free Fire</button>
+</div>
+
+<div class="status" id="status">STATUS : READY</div>
+
+<div class="footer">
+S H I R T . X &nbsp;&nbsp; P A N E L
+</div>
+
+</div>
+
+<script>
+
+const stars=document.getElementById("stars");
+
+for(let i=0;i<120;i++){
+
+const star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"vw";
+s
