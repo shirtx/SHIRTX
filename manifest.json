@@ -1,6 +1,6 @@
 {
-  "name": "Block Blast!",
-  "short_name": "Block Blast!",
+  "name": "Block Blast",
+  "short_name": "Block Blast",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#000000",
